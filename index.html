@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <title>Simple Interest Calculator</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        
-        <div class="maindiv">
-        <h1>Simple Interest Calculator</h1>
+</head>
+<body>
+
+<div class="maindiv">
+    <h1>Simple Interest Calculator</h1>
 
         Amount <input type="number"  id="principal" onchange="validateAmount()">  <br/>
         Rate <input type="range" id="rate" min="1" max="20" step="0.25" value="10.25" onchange="getSliderValue()"><span id="rateSpan">10.50%</span>  <br/>
@@ -31,5 +31,5 @@
         <span id="result"></span>
         <footer>&#169; Everyone Can Get Rich</footer>
     </div>
-    </body>
+</body>
 </html>
