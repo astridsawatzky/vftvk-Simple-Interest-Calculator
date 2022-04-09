@@ -1,5 +1,6 @@
 const calculateInterest = require('./script');
 
+
 test('1000 bucks, 10 year, 10 percent', () => {
     expect(calculateInterest(1000, 10,10)).toBe(1000);
 });
