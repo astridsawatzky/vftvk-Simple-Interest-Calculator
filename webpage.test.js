@@ -10,6 +10,15 @@ describe('Google', () => {
     })
 
     it('should display "google" text on page', async () => {
-        await expect(page).toMatch('google');
+        //find text in page
+        await expect(page).toMatch('Simple Interest Calculator');
+
     })
+    it('16 The title of the page is: Web App - Simple Interest Calculator', async () => {
+
+        const title = await page.title();
+        expect(title).toBe("Web App - Simple Interest Calculator");
+    })
+
+
 })
