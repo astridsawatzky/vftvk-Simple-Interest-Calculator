@@ -14,6 +14,25 @@ describe('Google', () => {
         await expect(page).toMatch('Simple Interest Calculator');
 
     })
+    
+
+
+    it('04 the dropdown box expands to the number of years', async () => {
+        var selected = await page.evaluate(() => {
+            return parseInt(document.getElementById("years").value);
+
+        });
+        expect(selected).toBe(1);
+        await page.select("#years", "10");
+
+        selected = await page.evaluate(() => {
+            return parseInt(document.getElementById("years").value);
+
+        });
+        expect(selected).toBe(10);
+
+    })
+
     it('16 The title of the page is: Web App - Simple Interest Calculator', async () => {
 
         const title = await page.title();
