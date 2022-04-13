@@ -29,7 +29,7 @@ function getSliderValue() {
 
 function isPrincipalBiggerThanZero() {
     const principal = document.getElementById("principal").value;
-    return parseInt(principal) >= 0;
+    return parseInt(principal) > 0;
 }
 
 function alertWrongEntryForPrincipal() {
