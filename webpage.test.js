@@ -8,7 +8,7 @@ describe('marks', () => {
     beforeEach(async () => {
             await page.evaluate(() => {
                 document.getElementById("principal").value = "";
-                document.getElementById("rate").value = 10.5;
+                document.getElementById("rate").value = 10.25;
                 document.getElementById("years").value = 1;
                 document.getElementById("result").innerHTML = "";
             })
