@@ -6,6 +6,7 @@ describe('marks', () => {
         await page.goto('file://C:/github/sick/index.html');
     })
 
+
     it('should display "google" text on page', async () => {
         //find text in page
         await expect(page).toMatch('Simple Interest Calculator');
@@ -66,6 +67,27 @@ describe('marks', () => {
 
         });
         expect(afterText).toBe("If you deposit <mark>1000</mark>,<br>at an interest rate of <mark>10</mark>,<br>you will receive an amount of <mark>1000</mark>,<br> in the year <mark>2032</mark>");
+
+
+    })
+    it('07 Amount 4800, rate 15,25, years 5', async () => {
+
+        await page.type('#principal', "4800");
+        await page.evaluate(() => {
+            document.getElementById("rate").value = 15.25;
+        })
+        await page.select("#years", "5");
+        const beforeText = await page.evaluate(() => {
+            return document.getElementById("result").innerHTML;
+
+        });
+        expect(beforeText).toBe("");
+        await page.click("#ComputeInterest");
+        const afterText = await page.evaluate(() => {
+            return document.getElementById("result").innerHTML;
+
+        });
+        expect(afterText).toBe("If you deposit <mark>4800</mark>,<br>at an interest rate of <mark>15.25</mark>,<br>you will receive an amount of <mark>3660</mark>,<br> in the year <mark>2027</mark>");
 
 
     })
