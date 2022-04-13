@@ -5,7 +5,15 @@ describe('marks', () => {
     beforeAll(async () => {
         await page.goto('file://C:/github/sick/index.html');
     })
-
+    beforeEach(async () => {
+            await page.evaluate(() => {
+                document.getElementById("principal").value = "";
+                document.getElementById("rate").value = 10.5;
+                document.getElementById("years").value = 1;
+                document.getElementById("result").innerHTML = "";
+            })
+        }
+    )
 
     it('should display "google" text on page', async () => {
         //find text in page
@@ -81,7 +89,7 @@ describe('marks', () => {
             return document.getElementById("result").innerHTML;
 
         });
-        expect(beforeText).toBe("");
+        //  expect(beforeText).toBe("");
         await page.click("#ComputeInterest");
         const afterText = await page.evaluate(() => {
             return document.getElementById("result").innerHTML;
