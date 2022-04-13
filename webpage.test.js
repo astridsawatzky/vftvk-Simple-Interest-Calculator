@@ -64,7 +64,7 @@ describe('marks', () => {
             let slider = document.getElementById("rate");
 
             slider.value = 10;
-            slider.dispatchEvent(new Event("change"));
+            slider.dispatchEvent(new Event("input"));
         })
 
         await page.select("#years", "10");
