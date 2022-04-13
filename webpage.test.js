@@ -61,8 +61,12 @@ describe('marks', () => {
 
         await page.type('#principal', "1000");
         await page.evaluate(() => {
-            document.getElementById("rate").value = 10;
+            let slider = document.getElementById("rate");
+
+            slider.value = 10;
+            slider.dispatchEvent(new Event("change"));
         })
+
         await page.select("#years", "10");
         const beforeText = await page.evaluate(() => {
             return document.getElementById("result").innerHTML;
@@ -75,8 +79,11 @@ describe('marks', () => {
 
         });
         expect(afterText).toBe("If you deposit <mark>1000</mark>,<br>at an interest rate of <mark>10</mark>,<br>you will receive an amount of <mark>1000</mark>,<br> in the year <mark>2032</mark>");
+       const rateSpan =await page.evaluate(() => {
 
-
+         return   document.getElementById("rateSpan").innerHTML;
+       });
+       expect(rateSpan).toBe("10%");
     })
     it('07 Amount 4800, rate 15,25, years 5', async () => {
 

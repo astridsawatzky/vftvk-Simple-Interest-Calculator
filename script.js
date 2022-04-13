@@ -24,7 +24,7 @@ function compute() {
 
 //update the rate value
 function getSliderValue() {
-    document.getElementById("rateSpan").innerHTML = document.getElementById("rate").value +"/";
+    document.getElementById("rateSpan").innerHTML = document.getElementById("rate").value +"%";
 }
 
 function isPrincipalBiggerThanZero() {
@@ -33,8 +33,10 @@ function isPrincipalBiggerThanZero() {
 }
 
 function alertWrongEntryForPrincipal() {
-    alert("Enter a positive number");
-    document.getElementById("principal").focus();
+   if(!alert("Enter a positive number")) {
+       document.getElementById("result").innerHTML ="";
+       document.getElementById("principal").focus();
+   }
 }
 
 //Check for positive values
