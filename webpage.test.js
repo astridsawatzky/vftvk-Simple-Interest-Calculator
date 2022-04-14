@@ -1,20 +1,35 @@
 const puppeteer = require("puppeteer");
+describe('mark7', () => {
+    beforeAll(async () => {
+        await page.goto('file://C:/github/sick/index.html');
+    })
+    it('07 Amount 4800, rate 15,25, years 5', async () => {
 
+        await page.type('#principal', "4800");
+        await page.evaluate(() => {
+            document.getElementById("rate").value = 15.25;
+        })
+        await page.select("#years", "5");
+        const beforeText = await page.evaluate(() => {
+            return document.getElementById("result").innerHTML;
+
+        });
+        //  expect(beforeText).toBe("");
+        await page.click("#ComputeInterest");
+        const afterText = await page.evaluate(() => {
+            return document.getElementById("result").innerHTML;
+
+        });
+        expect(afterText).toBe("If you deposit <mark>4800</mark>,<br>at an interest rate of <mark>15.25</mark>,<br>you will receive an amount of <mark>3660</mark>,<br> in the year <mark>2027</mark>");
+
+
+    })
+});
 describe('marks', () => {
 
     beforeAll(async () => {
         await page.goto('file://C:/github/sick/index.html');
     })
-    beforeEach(async () => {
-            await page.evaluate(() => {
-                document.getElementById("principal").value = "";
-                document.getElementById("rate").value = 10.25;
-                document.getElementById("years").value = 1;
-                document.getElementById("result").innerHTML = "";
-            })
-        }
-    )
-
     it('should display "google" text on page', async () => {
         //find text in page
         await expect(page).toMatch('Simple Interest Calculator');
@@ -84,27 +99,6 @@ describe('marks', () => {
          return   document.getElementById("rateSpan").innerHTML;
        });
        expect(rateSpan).toBe("10%");
-    })
-    it('07 Amount 4800, rate 15,25, years 5', async () => {
-
-        await page.type('#principal', "4800");
-        await page.evaluate(() => {
-            document.getElementById("rate").value = 15.25;
-        })
-        await page.select("#years", "5");
-        const beforeText = await page.evaluate(() => {
-            return document.getElementById("result").innerHTML;
-
-        });
-        //  expect(beforeText).toBe("");
-        await page.click("#ComputeInterest");
-        const afterText = await page.evaluate(() => {
-            return document.getElementById("result").innerHTML;
-
-        });
-        expect(afterText).toBe("If you deposit <mark>4800</mark>,<br>at an interest rate of <mark>15.25</mark>,<br>you will receive an amount of <mark>3660</mark>,<br> in the year <mark>2027</mark>");
-
-
     })
 
     it('16 The title of the page is: Web App - Simple Interest Calculator', async () => {
