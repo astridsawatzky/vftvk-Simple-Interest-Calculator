@@ -16,6 +16,25 @@ h1 {
     margin: auto;
 }
 
+.principalInput {
+    width: 129px;
+}
+
+.years {
+    width: 40px;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 126px auto;
+    margin: 0px 90px;
+}
+
+.result {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
 .table {
     text-align: left;
     margin: 0 auto;
