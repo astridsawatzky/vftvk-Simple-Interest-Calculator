@@ -25,6 +25,22 @@ describe('mark7', () => {
 
     })
 });
+
+describe('alert for empty principal', () => {
+    beforeAll(async () => {
+        await page.goto('file://C:/github/sick/index.html');
+    })
+    it('07 Amount asd0, rate 15,25, years 5', async () => {
+        let message;
+        page.on('dialog', async dialog => {
+            message = dialog.message();
+            await dialog.dismiss();
+        });
+        await page.click("#ComputeInterest")
+        expect(message).toContain("Enter a positive number");
+    })
+});
+
 describe('marks', () => {
 
     beforeAll(async () => {
@@ -94,11 +110,11 @@ describe('marks', () => {
 
         });
         expect(afterText).toBe("If you deposit <mark>1000</mark>,<br>at an interest rate of <mark>10</mark>,<br>you will receive an amount of <mark>1000</mark>,<br> in the year <mark>2032</mark>");
-       const rateSpan =await page.evaluate(() => {
+        const rateSpan = await page.evaluate(() => {
 
-         return   document.getElementById("rateSpan").innerHTML;
-       });
-       expect(rateSpan).toBe("10%");
+            return document.getElementById("rateSpan").innerHTML;
+        });
+        expect(rateSpan).toBe("10%");
     })
 
     it('16 The title of the page is: Web App - Simple Interest Calculator', async () => {
@@ -109,3 +125,4 @@ describe('marks', () => {
 
 
 })
+
