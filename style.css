@@ -26,7 +26,7 @@ h1 {
 
 .inner {
     display: grid;
-    grid-template-columns: 126px auto;
+    grid-template-columns: 120px auto;
     margin: 0px 90px;
 }
 
