@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-describe('mark7', () => {
+describe('marks', () => {
     beforeAll(async () => {
         await page.goto('file://C:/github/sick/index.html');
     })
@@ -10,11 +10,6 @@ describe('mark7', () => {
             document.getElementById("rate").value = 15.25;
         })
         await page.select("#years", "5");
-        const beforeText = await page.evaluate(() => {
-            return document.getElementById("result").innerHTML;
-
-        });
-        //  expect(beforeText).toBe("");
         await page.click("#ComputeInterest");
         const afterText = await page.evaluate(() => {
             return document.getElementById("result").innerHTML;
@@ -26,16 +21,50 @@ describe('mark7', () => {
     })
 });
 
-describe('alert for empty principal', () => {
+describe('marks', () => {
     beforeAll(async () => {
         await page.goto('file://C:/github/sick/index.html');
     })
-    it('07 Amount asd0, rate 15,25, years 5', async () => {
+    it('10 alert for empty principal', async () => {
         let message;
-        page.on('dialog', async dialog => {
+        page.once('dialog', async dialog => {
             message = dialog.message();
             await dialog.dismiss();
         });
+        await page.click("#ComputeInterest")
+        expect(message).toContain("Enter a positive number");
+    })
+});
+describe('marks', () => {
+    beforeAll(async () => {
+        await page.goto('file://C:/github/sick/index.html');
+    })
+    it('09 Amount -1 alert for negative principal', async () => {
+        let message;
+        page.once('dialog', async dialog => {
+            message = dialog.message();
+            await dialog.dismiss();
+        });
+        await page.evaluate(() => {
+            document.getElementById("principal").value = -1;
+        })
+        await page.click("#ComputeInterest")
+        expect(message).toContain("Enter a positive number");
+    })
+});
+describe('marks', () => {
+    beforeAll(async () => {
+        await page.goto('file://C:/github/sick/index.html');
+    })
+    it('08 Amount 0 alert for 0 principal', async () => {
+        let message;
+        page.once('dialog', async dialog => {
+            message = dialog.message();
+            await dialog.dismiss();
+        });
+        await page.evaluate(() => {
+            document.getElementById("principal").value = 0;
+        })
         await page.click("#ComputeInterest")
         expect(message).toContain("Enter a positive number");
     })
