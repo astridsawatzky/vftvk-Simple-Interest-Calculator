@@ -13,10 +13,10 @@ function compute() {
         var interest = calculateInterest(principal, years, rate);
         var yearInTheFuture = new Date().getFullYear() + years;
         //Create the Interest text
-        document.getElementById("result").innerHTML = "If you deposit <mark>" + principal + "</mark>,<br/>" +
+        document.getElementById("result").innerHTML = "If you deposit <mark>" + principal + "</mark><br/>" +
             "at an interest rate of <mark>" + rate + "</mark>,<br/>" +
-            "you will receive an amount of <mark>" + interest + "</mark>,<br/> " +
-            "in the year <mark>" + yearInTheFuture + "</mark>";
+            "you will receive an amount of <mark>" + interest + "</mark><br/> " +
+            "in the year <mark>" + yearInTheFuture + "</mark>.";
     } else {
         alertWrongEntryForPrincipal();
     }

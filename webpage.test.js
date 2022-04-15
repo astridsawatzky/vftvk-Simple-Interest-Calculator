@@ -15,7 +15,7 @@ describe('marks', () => {
             return document.getElementById("result").innerHTML;
 
         });
-        expect(afterText).toBe("If you deposit <mark>4800</mark>,<br>at an interest rate of <mark>15.25</mark>,<br>you will receive an amount of <mark>3660</mark>,<br> in the year <mark>2027</mark>");
+        expect(afterText).toBe("If you deposit <mark>4800</mark><br>at an interest rate of <mark>15.25</mark>,<br>you will receive an amount of <mark>3660</mark><br> in the year <mark>2027</mark>.");
 
 
     })
@@ -138,7 +138,7 @@ describe('marks', () => {
             return document.getElementById("result").innerHTML;
 
         });
-        expect(afterText).toBe("If you deposit <mark>1000</mark>,<br>at an interest rate of <mark>10</mark>,<br>you will receive an amount of <mark>1000</mark>,<br> in the year <mark>2032</mark>");
+        expect(afterText).toBe("If you deposit <mark>1000</mark><br>at an interest rate of <mark>10</mark>,<br>you will receive an amount of <mark>1000</mark><br> in the year <mark>2032</mark>.");
         const rateSpan = await page.evaluate(() => {
 
             return document.getElementById("rateSpan").innerHTML;
